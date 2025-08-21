@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: latest
+      nodejs: 18
     commands:
       - echo "installing something"
 
@@ -16,29 +16,29 @@ phases:
       - echo "we are in the build block"
       - echo "we will run some tests"
       - mkdir -p test-reports
+
+      # تست: وجود عبارت "Congratulations" در index.html
       - |
         if grep -Fq "Congratulations" index.html; then
           echo "Test passed"
-          cat > test-reports/junit.xml <<'XML'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <testsuites>
-            <testsuite name="simple-check" tests="1" failures="0" errors="0" time="0.0">
-              <testcase classname="index-check" name="contains-Congratulations" time="0.0"/>
-            </testsuite>
-          </testsuites>
-          XML
-                  else
-                    echo "Test failed"
-                    cat > test-reports/junit.xml <<'XML'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <testsuites>
-            <testsuite name="simple-check" tests="1" failures="1" errors="0" time="0.0">
-              <testcase classname="index-check" name="contains-Congratulations" time="0.0">
-                <failure message="String 'Congratulations' not found in index.html"/>
-              </testcase>
-            </testsuite>
-          </testsuites>
-          XML
+          printf '%s\n' \
+            '<?xml version="1.0" encoding="UTF-8"?>' \
+            '<testsuites>' \
+            '  <testsuite name="simple-check" tests="1" failures="0" errors="0" time="0.0">' \
+            '    <testcase classname="index-check" name="contains-Congratulations" time="0.0"/>' \
+            '  </testsuite>' \
+            '</testsuites>' > test-reports/junit.xml
+        else
+          echo "Test failed"
+          printf '%s\n' \
+            '<?xml version="1.0" encoding="UTF-8"?>' \
+            '<testsuites>' \
+            '  <testsuite name="simple-check" tests="1" failures="1" errors="0" time="0.0">' \
+            '    <testcase classname="index-check" name="contains-Congratulations" time="0.0">' \
+            '      <failure message="String '\''Congratulations'\'' not found in index.html"/>' \
+            '    </testcase>' \
+            '  </testsuite>' \
+            '</testsuites>' > test-reports/junit.xml
           exit 1
         fi
 
@@ -47,8 +47,9 @@ phases:
       - echo "we are in the post build phase"
 
 reports:
-  my-repo-group:                 
+  my-repo-group:            # دقیقا همان نام Report Group شما
     files:
-      - "**/*.xml"               
+      - "**/*.xml"
     base-directory: "test-reports"
     discard-paths: true
+
