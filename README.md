@@ -1,2 +1,4 @@
 # My Project
-[![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiYVRsZTN0RlpUWUFKRm8wRGpKNFNPNmVhTEFKbCs3aXJ6eXZQRzJ6YURVL284ek1xVEpGWUl0eDBYcXdEeDJjL01oNXhOYkdhZG1MYTFxZFhtNzFCamxRPSIsIml2UGFyYW1ldGVyU3BlYyI6IlBFbGN2S25JOTJaWHpoOXUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
+[![Build Status](
+https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiYVRsZTN0RlpUWUFKRm8wRGpKNFNPNmVhTEFKbCs3aXJ6eXZQRzJ6YURVL284ek1xVEpGWUl0eDBYcXdEeDJjL01oNXhOYkdhZG1MYTFxZFhtNzFCamxRPSIsIml2UGFyYW1ldGVyU3BlYyI6IlBFbGN2S25JOTJaWHpoOXUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main
+)
