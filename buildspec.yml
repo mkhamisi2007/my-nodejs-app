@@ -15,7 +15,6 @@ phases:
     commands:
       - echo "we are in the build block"
       - echo "we will run some tests"
-      # نتیجه‌ی تست: وجود عبارت "Congratulations" در index.html
       - mkdir -p test-reports
       - |
         if grep -Fq "Congratulations" index.html; then
@@ -40,7 +39,6 @@ XML
   </testsuite>
 </testsuites>
 XML
-          # اگر می‌خواهی با شکست تست، بیلد هم fail شود، خط بعدی را فعال بگذار:
           exit 1
         fi
 
@@ -48,10 +46,9 @@ XML
     commands:
       - echo "we are in the post build phase"
 
-# ⬇️ این بخش گزارش را به Report Group می‌فرستد
 reports:
-  my-repo-group:                 # همان نام Report Group شما
+  my-repo-group:                 
     files:
-      - "**/*.xml"               # فایل‌های گزارش (JUnit XML)
+      - "**/*.xml"               
     base-directory: "test-reports"
     discard-paths: true
