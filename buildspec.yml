@@ -17,4 +17,9 @@ phases:
     post_build:
         commands:
             - echo "we are in the post build phase"
-            
+    reports:
+      my-repo-group:   # اسم Report Group که قبلاً ساختی
+        files:
+          - '**/*'         # مسیر فایل‌های خروجی تست
+        base-directory: target/surefire-reports   # دایرکتوری تست‌ها (برای Maven)
+        discard-paths: yes
